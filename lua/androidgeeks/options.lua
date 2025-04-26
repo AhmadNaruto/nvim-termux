@@ -1,11 +1,12 @@
 local o = vim.opt
 local s = vim.cmd
+local g = vim.g
 
 s 'set expandtab'
 s 'set tabstop=2'
 s 'set softtabstop=2'
 s 'set shiftwidth=2'
-vim.g.have_nerd_font = false
+g.have_nerd_font = false
 o.number = true
 o.relativenumber = false
 o.showmode = false
