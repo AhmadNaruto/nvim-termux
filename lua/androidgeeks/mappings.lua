@@ -2,19 +2,22 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Explorer
-vim.keymap.set('n', '<leader>e', '<cmd>Ex<CR>')
--- Save file
-vim.keymap.set('n', '<leader>w', '<cmd>w<CR>')
+local map = vim.keymap.set
+
+map('n', '<leader>e', '<cmd>Ex<CR>', { desc = 'File Explorer', noremap = true, silent = true })
+
+map('n', '<leader>w', '<cmd>w<CR>', { desc = 'Save File', noremap = true, silent = true })
 -- Quit / Exit Neovim
-vim.keymap.set('n', '<leader>q', '<cmd>q<CR>')
+map('n', '<leader>q', '<cmd>q<CR>', { desc = 'Exit', noremap = true, silent = true })
 -- Neo Tree
-vim.keymap.set('n', '<leader>t', '<cmd>Neotree toggle<CR>')
+map('n', '<leader>t', '<cmd>Neotree toggle<CR>', { desc = 'File Explorer', noremap = true, silent = true })
 -- Bufferline / Tabs
-vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>')
-vim.keymap.set('n', '<S-Tab>', '<cmd>bprevious<CR>')
-vim.keymap.set('n', '<leader>x', '<cmd>bdelete!<CR>') -- close buffer
-vim.keymap.set('n', '<leader>n', '<cmd>enew<CR>') -- new buffer
+map('n', '<Tab>', '<cmd>bnext<CR>')
+map('n', '<S-Tab>', '<cmd>bprevious<CR>')
+map('n', '<leader>x', '<cmd>bdelete!<CR>') -- close buffer
+map('n', '<leader>n', '<cmd>enew<CR>')     -- new buffer
+
 -- Run code
-vim.keymap.set('n', '<leader>rl', '<cmd>term lua %<CR>')
-vim.keymap.set('n', '<leader>rp', '<cmd>term python %<CR>')
+map('n', '<leader>r', function()
+  require('androidgeeks.term').run_current_file()
+end, { desc = 'Run code', noremap = true, silent = true })
