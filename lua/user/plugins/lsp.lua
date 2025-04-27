@@ -206,6 +206,12 @@ return {
       -- But for many setups, the LSP (`ts_ls`) will work just fine
       -- ts_ls = {},
       --
+      -- somewhere in your lspconfig setup
+      require('lspconfig').clangd.setup {
+        cmd = { 'clangd' }, -- use system clangd
+        filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+        root_dir = require('lspconfig.util').root_pattern('compile_commands.json', 'compile_flags.txt', '.git'),
+      },
 
       lua_ls = {
         -- cmd = { ... },
