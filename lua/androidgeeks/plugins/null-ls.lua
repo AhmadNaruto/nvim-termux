@@ -32,7 +32,7 @@ return {
         formatting.shfmt,
 
         -- C/C++
-        formatting.clang_format,
+        null_ls.builtins.formatting.clang_format,
 
         -- JSON / YAML
         formatting.prettier.with {
