@@ -19,14 +19,14 @@ return {
 
         -- Python
         formatting.black,
-        formatting.isort,
+        -- formatting.isort,
 
         -- Go
         formatting.gofmt,
         formatting.goimports,
 
         -- Rust
-        formatting.rustfmt,
+        -- formatting.rustfmt,
 
         -- Shell
         formatting.shfmt,
