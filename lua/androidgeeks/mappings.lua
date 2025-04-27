@@ -12,10 +12,10 @@ map('n', '<leader>q', '<cmd>q<CR>', { desc = 'Exit', noremap = true, silent = tr
 -- Neo Tree
 map('n', '<leader>t', '<cmd>Neotree toggle<CR>', { desc = 'File Explorer', noremap = true, silent = true })
 -- Bufferline / Tabs
-map('n', '<Tab>', '<cmd>bnext<CR>')
-map('n', '<S-Tab>', '<cmd>bprevious<CR>')
-map('n', '<leader>x', '<cmd>bdelete!<CR>') -- close buffer
-map('n', '<leader>n', '<cmd>enew<CR>')     -- new buffer
+map('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next Tab', noremap = true, silent = true })
+map('n', '<S-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous Tab', noremap = true, silent = true })
+map('n', '<leader>x', '<cmd>bdelete!<CR>', { desc = 'Close Tab', noremap = true, silent = true })
+map('n', '<leader>n', '<cmd>enew<CR>', { desc = 'New Tab', noremap = true, silent = true })
 
 -- Run code
 map('n', '<leader>r', function()

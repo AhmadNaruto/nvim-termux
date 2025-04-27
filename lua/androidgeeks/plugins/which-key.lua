@@ -28,28 +28,6 @@ return { -- Useful plugin to show you pending keybinds.
     },
 
     -- Document existing key chains
-    spec = {
-      { '<leader>e', group = 'Explorer' },
-      { '<leader>w', group = 'Save File' },
-      { '<leader>q', group = 'Quit / Exit' },
-      { '<leader>t', group = 'Neo Tree' },
-      { '<Tab>', group = 'Next Tab' },
-      { '<S-Tab>', group = 'Previous Tab' },
-      { '<leader>x', group = 'Close Tab' },
-      { '<leader>n', group = 'New Tab' },
-      { '<leader>f', group = 'Format Code' },
-      { '<leader>rl', group = 'Run Lua Code' },
-      { '<leader>rp', group = 'Run Python Code' },
-    },
-  },
-
-  keys = {
-    {
-      '<leader>?',
-      function()
-        require('which-key').show { global = false }
-      end,
-      desc = 'Buffer Local Keymaps (which-key)',
-    },
+    spec = {},
   },
 }
