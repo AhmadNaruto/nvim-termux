@@ -16,6 +16,7 @@ map('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next Tab', noremap = true, silent 
 map('n', '<S-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous Tab', noremap = true, silent = true })
 map('n', '<leader>x', '<cmd>bdelete!<CR>', { desc = 'Close Tab', noremap = true, silent = true })
 map('n', '<leader>n', '<cmd>enew<CR>', { desc = 'New Tab', noremap = true, silent = true })
+map('n', '<leader>d', '<cmd>Alpha<CR>', { desc = 'Dashboard', noremap = true, silent = true })
 
 -- Run code
 map('n', '<leader>r', function()
