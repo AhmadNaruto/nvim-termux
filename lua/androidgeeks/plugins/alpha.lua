@@ -26,7 +26,7 @@ return {
     dashboard.section.header.opts = {
       position = 'center',
       hl = 'AlphaHeader',
-      vim.api.nvim_set_hl(0, 'AlphaHeader', { fg = '#00FFFF', bold = true })
+      vim.api.nvim_set_hl(0, 'AlphaHeader', { fg = '#00FFFF', bold = true }),
     }
 
     dashboard.section.buttons.val = {
@@ -47,6 +47,7 @@ return {
     dashboard.section.buttons.opts = {
       position = 'center',
       hl = 'AlphaButtons',
+      vim.api.nvim_set_hl(0, 'AlphaButtons', { fg = '#00FFFF' }),
     }
 
     dashboard.section.footer.opts = {
