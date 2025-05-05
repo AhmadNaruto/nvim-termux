@@ -76,7 +76,6 @@ Plugins and configurations will auto-install on the first launch! 🌟
 | Mode | Mapping     | Action             |
 | :--- | :---------- | :----------------- |
 | n    | `<leader>e` | Netrw              |
-| n    | `<leader>f` | Format Code        |
 | n    | `<leader>n` | New Tab            |
 | n    | `<leader>q` | Exit / Quit Neovim |
 | n    | `<leader>w` | Save File          |
@@ -84,6 +83,23 @@ Plugins and configurations will auto-install on the first launch! 🌟
 | n    | `<leader>t` | Neo Tree           |
 
 > Leader is space. Press space on your keyboard!!!
+
+## ⌨️ NVIM-CMP Key Mappings
+
+| Mode | Mapping     | Action             |
+| :--- | :---------- | :----------------- |
+| n    | `<Tab>`     | Next               |
+| n    | `<S-Tab>`   | Previous           |
+| n    | `<Enter>`   | Confirm Selection  |
+| n    | `<C-Space>` | Complete Mapping   |
+
+## ⌨️ Bufferline / Tabs Key Mappings
+
+| Mode | Mapping     | Action             |
+| :--- | :---------- | :----------------- |
+| n    | `<Tab>`     | Next               |
+| n    | `<S-Tab>`   | Previous           |
+| n    | `<leader>x` | Close Tab          |
 
 ---
 
