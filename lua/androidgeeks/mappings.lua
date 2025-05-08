@@ -10,7 +10,7 @@ map('n', '<leader>w', '<cmd>w<CR>', { desc = 'Save File', noremap = true, silent
 -- Quit / Exit Neovim
 map('n', '<leader>q', '<cmd>q<CR>', { desc = 'Exit', noremap = true, silent = true })
 -- Neo Tree
-map('n', '<leader>t', '<cmd>Neotree toggle<CR>', { desc = 'File Explorer', noremap = true, silent = true })
+map('n', '<leader>tt', '<cmd>Neotree toggle<CR>', { desc = 'File Explorer', noremap = true, silent = true })
 -- Bufferline / Tabs
 map('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next Tab', noremap = true, silent = true })
 map('n', '<S-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous Tab', noremap = true, silent = true })
