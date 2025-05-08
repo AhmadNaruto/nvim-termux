@@ -47,7 +47,7 @@ mv ~/.config/nvim ~/.config/nvim.bak
 
 # Clone this repo
 git clone https://github.com/AndroidGeeksYT/AndroidGeeks-Kickstart-Nvim ~/.config/nvim
-rm -rf .git/
+rm -rf .config/nvim/.git
 
 # Launch Neovim
 nvim
@@ -80,7 +80,7 @@ Plugins and configurations will auto-install on the first launch! 🌟
 | n    | `<leader>q` | Exit / Quit Neovim |
 | n    | `<leader>w` | Save File          |
 | n    | `<leader>x` | Close Tab          |
-| n    | `<leader>t` | Neo Tree           |
+| n    | `<leader>tt`| Neo Tree           |
 
 > Leader is space. Press space on your keyboard!!!
 
