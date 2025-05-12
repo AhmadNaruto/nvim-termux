@@ -1,6 +1,7 @@
 return {
   'nvimtools/none-ls.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
+  optional = true,
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
@@ -10,7 +11,11 @@ return {
     local formatting = null_ls.builtins.formatting
 
     null_ls.setup {
+      debug = false,
       sources = {
+        formatting.biome.with {
+          prefer_local = '/data/data/com.termux/files/usr/bin/',
+        },
         -- Web
         formatting.prettier, -- js, ts, jsx, tsx, css, html, json, md, etc.
 
@@ -32,9 +37,9 @@ return {
         formatting.shfmt,
 
         -- C/C++
-        null_ls.builtins.formatting.clang_format,
+        formatting.clang_format,
 
-        -- JSON / YAML
+        --[[ JSON / YAML
         formatting.prettier.with {
           filetypes = { 'json', 'yaml' },
         },
@@ -42,7 +47,7 @@ return {
         -- Markdown
         formatting.prettier.with {
           filetypes = { 'markdown' },
-        },
+        },]]
       },
       on_attach = function(client, bufnr)
         if client.supports_method 'textDocument/formatting' then

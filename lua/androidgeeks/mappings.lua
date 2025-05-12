@@ -18,7 +18,12 @@ map('n', '<leader>x', '<cmd>bdelete!<CR>', { desc = 'Close Tab', noremap = true,
 map('n', '<leader>n', '<cmd>enew<CR>', { desc = 'New Tab', noremap = true, silent = true })
 map('n', '<leader>d', '<cmd>Alpha<CR>', { desc = 'Dashboard', noremap = true, silent = true })
 
--- Run code
+map('n', 'w', '<cmd>w<CR>')
+map('n', 'q', '<cmd>q<CR>')
+map('n', 'x', '<cmd>qa!<CR>')
+
+--[[ Run code
 map('n', '<leader>r', function()
   require('androidgeeks.term').run_current_file()
 end, { desc = 'Run code', noremap = true, silent = true })
+]]

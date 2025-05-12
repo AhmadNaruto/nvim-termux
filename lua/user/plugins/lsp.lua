@@ -14,6 +14,7 @@ return {
 
     -- Allows extra capabilities provided by blink.cmp
     'saghen/blink.cmp',
+    'yioneko/nvim-vtsls',
   },
   config = function()
     -- Brief aside: **What is LSP?**
@@ -151,18 +152,19 @@ return {
 
     -- Diagnostic Config
     -- See :help vim.diagnostic.Opts
+    --
     vim.diagnostic.config {
       severity_sort = true,
-      float = { border = 'rounded', source = 'if_many' },
-      underline = { severity = vim.diagnostic.severity.ERROR },
-      signs = vim.g.have_nerd_font and {
+      -- float = { border = 'rounded', source = 'if_many' },
+      --underline = { severity = vim.diagnostic.severity.ERROR },
+      signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = '󰅚 ',
           [vim.diagnostic.severity.WARN] = '󰀪 ',
           [vim.diagnostic.severity.INFO] = '󰋽 ',
           [vim.diagnostic.severity.HINT] = '󰌶 ',
         },
-      } or {},
+      }, --[[
       virtual_text = {
         source = 'if_many',
         spacing = 2,
@@ -176,6 +178,7 @@ return {
           return diagnostic_message[diagnostic.severity]
         end,
       },
+      virtual_text = false, ]]
     }
 
     -- LSP servers and clients are able to communicate to each other what features they support.
@@ -193,10 +196,13 @@ return {
     --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+    --
+    local srvset = require 'lspconfig'
+    local srvutil = require('lspconfig.util').root_pattern
     local servers = {
       -- clangd = {},
       -- gopls = {},
-      pyright = {},
+      -- pyright = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
@@ -207,10 +213,48 @@ return {
       -- ts_ls = {},
       --
       -- somewhere in your lspconfig setup
-      require('lspconfig').clangd.setup {
+      --[[
+      srvset.clangd.setup {
         cmd = { 'clangd' }, -- use system clangd
         filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
-        root_dir = require('lspconfig.util').root_pattern('compile_commands.json', 'compile_flags.txt', '.git'),
+        root_dir = srvutil('compile_commands.json', 'compile_flags.txt', '.git'),
+      }, ]]
+
+      srvset.biome.setup {
+        cmd = { 'biome', 'lsp-proxy' },
+        filetypes = {
+          'astro',
+          'css',
+          'graphql',
+          'javascript',
+          'javascriptreact',
+          'json',
+          'jsonc',
+          'svelte',
+          'typescript',
+          'typescript.tsx',
+          'typescriptreact',
+        },
+        -- single_file_support = true,
+        root_dir = srvutil('biome.json', 'biome.jsonc', '.git'),
+      },
+      -- biome = { single_file_support = true },
+      srvset.vtsls.setup {
+        cmd = { 'vtsls', '--stdio' },
+        filetypes = {
+          'javascript',
+          'javascriptreact',
+          'javascript.jsx',
+          'typescript',
+          'typescriptreact',
+          'typescript.tsx',
+        },
+        settings = {
+          complete_function_calls = false,
+          vtsls = { experimental = { completion = { enableServerSideFuzzyMatch = true } } },
+        },
+        -- single_file_support = true,
+        root_dir = srvutil('tsconfig.json', 'package.json', 'jsconfig.json', '.git'),
       },
 
       lua_ls = {
