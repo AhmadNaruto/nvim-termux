@@ -6,7 +6,7 @@ s 'set expandtab'
 s 'set tabstop=2'
 s 'set softtabstop=2'
 s 'set shiftwidth=2'
-g.have_nerd_font = false
+g.have_nerd_font = true
 o.number = true
 o.relativenumber = false
 o.showmode = false
@@ -25,3 +25,6 @@ o.inccommand = 'split'
 o.cursorline = true
 o.scrolloff = 10
 o.wrap = false
+o.scrolloff = 25
+
+vim.diagnostic.config { virtual_text = false }

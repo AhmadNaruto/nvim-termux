@@ -153,16 +153,16 @@ return {
     -- See :help vim.diagnostic.Opts
     vim.diagnostic.config {
       severity_sort = true,
-      float = { border = 'rounded', source = 'if_many' },
+      -- float = { border = 'rounded', source = 'if_many' },
       underline = { severity = vim.diagnostic.severity.ERROR },
-      signs = vim.g.have_nerd_font and {
+      signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = '󰅚 ',
           [vim.diagnostic.severity.WARN] = '󰀪 ',
           [vim.diagnostic.severity.INFO] = '󰋽 ',
           [vim.diagnostic.severity.HINT] = '󰌶 ',
         },
-      } or {},
+      }, --[[
       virtual_text = {
         source = 'if_many',
         spacing = 2,
@@ -175,7 +175,8 @@ return {
           }
           return diagnostic_message[diagnostic.severity]
         end,
-      },
+      },]]
+      virtual_text = false,
     }
 
     -- LSP servers and clients are able to communicate to each other what features they support.
@@ -212,6 +213,25 @@ return {
         filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
         root_dir = require('lspconfig.util').root_pattern('compile_commands.json', 'compile_flags.txt', '.git'),
       },
+      require('lspconfig').biome.setup {
+        cmd = { 'biome', 'lsp-proxy' },
+        filetypes = {
+          'astro',
+          'css',
+          'graphql',
+          'javascript',
+          'javascriptreact',
+          'json',
+          'jsonc',
+          'svelte',
+          'typescript',
+          'typescript.tsx',
+          'typescriptreact',
+        },
+        root_dir = require('lspconfig.util').root_pattern('biome.json', 'biome.jsonc', '.git'),
+      },
+
+      vtsls = {},
 
       lua_ls = {
         -- cmd = { ... },
