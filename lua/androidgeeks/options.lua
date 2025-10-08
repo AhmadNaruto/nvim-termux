@@ -6,6 +6,7 @@ s 'set expandtab'
 s 'set tabstop=2'
 s 'set softtabstop=2'
 s 'set shiftwidth=2'
+s 'set foldmethod=manual'
 g.have_nerd_font = true
 o.number = true
 o.relativenumber = false
@@ -26,5 +27,12 @@ o.cursorline = true
 o.scrolloff = 10
 o.wrap = false
 o.scrolloff = 25
+o.fillchars = {
+  fold = ' ',
+  foldopen = '',
+  foldsep = ' ',
+  foldclose = '',
+}
+o.termguicolors = true
 
 vim.diagnostic.config { virtual_text = false }

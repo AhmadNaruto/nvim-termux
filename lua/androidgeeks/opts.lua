@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- A little ninja
-vim.lsp.set_log_level 'debug'
+-- vim.lsp.set_log_level 'debug'
 
 vim.api.nvim_create_user_command('LspLog', function()
   vim.cmd('e ' .. vim.lsp.get_log_path())

@@ -2,12 +2,12 @@ return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
   dependencies = {
-    {
+    --[[{
       'Fildo7525/pretty_hover',
       -- enabled = true, ---@type boolean
       event = 'LspAttach',
       opts = {},
-    },
+    }, ]]
     'brenoprata10/nvim-highlight-colors',
   },
 
@@ -89,7 +89,7 @@ return {
       },
       list = {
         -- Maximum number of items to display
-        max_items = 200, ---@type number?
+        max_items = 50, ---@type number?
         selection = {
           preselect = true, ---@type boolean
           auto_insert = false, ---@type boolean
@@ -139,10 +139,11 @@ return {
         },
       },
       documentation = {
-        auto_show = false,
+        auto_show = true,
         window = { border = 'rounded' },
+        --winhighlight = 'Pmenu:Pmenu,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
         treesitter_highlighting = true, ---@type boolean
-        -- pretty_hover plugin
+        --[[ pretty_hover plugin
         draw = function(opts)
           if opts.item and opts.item.documentation then
             local out = require('pretty_hover.parser').parse(opts.item.documentation.value)
@@ -150,14 +151,14 @@ return {
           end
 
           opts.default_implementation(opts)
-        end,
+        end,]]
       },
     },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = function(ctx)
+      default = function()
         local success, node = pcall(vim.treesitter.get_node)
         if success and node and vim.tbl_contains({ 'comment', 'line_comment', 'block_comment' }, node:type()) then
           return { 'buffer' }
